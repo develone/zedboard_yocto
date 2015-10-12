@@ -21,6 +21,7 @@ meta-yocto-bsp    = "dora:c3cccbea7abd4af3d603b2be42b0c7291ff21946"
 
 NOTE: Preparing runqueue
 NOTE: Executing SetScene Tasks
-NOTE: Running setscene
+NOTE: Executing RunQueue Tasks
+NOTE: Tasks Summary: Attempted 7436 tasks of which 7420 didn't need to be rerun and all succeeded.
+NOTE: Writing buildhistory
 
-NOTE: Tasks Summary: Attempted 6786 tasks of which 6762 didn't need to be rerun and all succeeded.
