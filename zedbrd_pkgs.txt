@@ -54,6 +54,7 @@ dbus-wait-0.1+git0+6cc6077a36-r2.armv7a_vfp_neon
 diffstat-1.57-r0.armv7a_vfp_neon
 diffutils-3.3-r0.armv7a_vfp_neon
 distcc-3.1-r0.armv7a_vfp_neon
+dropbear-2013.58-r1.0.armv7a_vfp_neon
 e2fsprogs-1.42.8-r0.armv7a_vfp_neon
 e2fsprogs-badblocks-1.42.8-r0.armv7a_vfp_neon
 e2fsprogs-dev-1.42.8-r0.armv7a_vfp_neon
@@ -646,12 +647,6 @@ opencv-dev-2.4.6+git0+c5afaa4e8d-r0.armv7a_vfp_neon
 opencv-samples-2.4.3+git0+6fae07ba88-r0.armv7a_vfp_neon
 opencv-samples-dev-2.4.3+git0+6fae07ba88-r0.armv7a_vfp_neon
 opencv-staticdev-2.4.6+git0+c5afaa4e8d-r0.armv7a_vfp_neon
-openssh-6.2p2-r0.armv7a_vfp_neon
-openssh-keygen-6.2p2-r0.armv7a_vfp_neon
-openssh-scp-6.2p2-r0.armv7a_vfp_neon
-openssh-sftp-server-6.2p2-r0.armv7a_vfp_neon
-openssh-ssh-6.2p2-r0.armv7a_vfp_neon
-openssh-sshd-6.2p2-r0.armv7a_vfp_neon
 openssl-1.0.1e-r15.0.armv7a_vfp_neon
 openssl-conf-1.0.1e-r15.0.armv7a_vfp_neon
 openssl-dev-1.0.1e-r15.0.armv7a_vfp_neon
@@ -666,10 +661,9 @@ packagegroup-base-nfs-1.0-r76.zedboard
 packagegroup-base-zeroconf-1.0-r76.zedboard
 packagegroup-core-boot-1.0-r11.zedboard
 packagegroup-core-buildessential-1.0-r0.all
-packagegroup-core-eclipse-debug-1.0-r0.all
 packagegroup-core-qt-demoapps-1.0-r4.all
 packagegroup-core-sdk-1.0-r9.all
-packagegroup-core-ssh-openssh-1.0-r1.all
+packagegroup-core-ssh-dropbear-1.0-r1.all
 packagegroup-core-standalone-sdk-target-1.0-r8.all
 packagegroup-core-tools-debug-1.0-r2.zedboard
 packagegroup-core-tools-profile-1.0-r3.zedboard
@@ -1417,7 +1411,6 @@ systemtap-2.3+git0+e58138572e-r0.armv7a_vfp_neon
 sysvinit-2.88dsf-r11.armv7a_vfp_neon
 sysvinit-inittab-2.88dsf-r9.zedboard
 sysvinit-pidof-2.88dsf-r11.armv7a_vfp_neon
-tcf-agent-0.4.0+git0+4ef94ecb92-r2.armv7a_vfp_neon
 tcl-8.6.0-r0.armv7a_vfp_neon
 tcl-lib-8.6.0-r0.armv7a_vfp_neon
 trace-cmd-1.2+git0+7055ffd37b-r3.armv7a_vfp_neon
