@@ -1,0 +1,26 @@
+10/12/15/
+bitbake core-image-sato
+
+Build Configuration:
+BB_VERSION        = "1.20.0"
+BUILD_SYS         = "x86_64-linux"
+NATIVELSBSTRING   = "Ubuntu-12.04"
+TARGET_SYS        = "arm-poky-linux-gnueabi"
+MACHINE           = "zedboard"
+DISTRO            = "poky"
+DISTRO_VERSION    = "1.5.1"
+TUNE_FEATURES     = "armv7a vfp neon"
+TARGET_FPU        = "vfp-neon"
+meta              
+meta-yocto        = "dora:c3cccbea7abd4af3d603b2be42b0c7291ff21946"
+meta-topic        = "master:63a952c04ba10b6f40edf635413181e2104f51cf"
+meta-oe           
+meta-multimedia   
+meta-gnome        = "dora:191499a2b54d04855284347ce5a067f998646be4"
+meta-yocto-bsp    = "dora:c3cccbea7abd4af3d603b2be42b0c7291ff21946"
+
+NOTE: Preparing runqueue
+NOTE: Executing SetScene Tasks
+NOTE: Running setscene
+
+NOTE: Tasks Summary: Attempted 6786 tasks of which 6762 didn't need to be rerun and all succeeded.
