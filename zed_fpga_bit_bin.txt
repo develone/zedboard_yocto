@@ -1,0 +1,110 @@
+
+
+In the local.conf file the variable IMAGE_INSTALL_append should include the following 
+items fpga-image-adi adi-hdmi-load. These 2 items are from meta-topic [1].   
+This repository was created by Mike Looijmans <mike.looijmans@topic.nl>.
+
+The recipe "meta-topic/recipes-bsp/fpga/fpga-image-adi.bb"  
+is used in the core-image-sato build.  The recipe fpga-image-adi.bb
+calls the Xilinx XPS program using the
+"FPGA bitstream reference design from ADI" [2].  The recipe 
+"meta-topic/recipes-bsp/fpga/fpga-image-adi.bb" will download
+ "git://github.com/analogdevicesinc/fpgahdl_xilinx.git"
+check out the version "3e6cfd4858635e49ea131da1bb4b7b6dd258280b".
+
+
+The recipe "meta-topic/recipes-bsp/fpga/fpga-image-load.bb"
+creates the RPM used to install the file "/etc/init.d/fpga-image-load.sh".
+The script "/etc/init.d/fpga-image-load.sh" is 
+(FPGA bitstream image loader, loads fpga.bin early at boot).
+
+In order to download fpga.bit  needs to be converted 
+
+Zynq-7000 Example Design - Program the PL using the Linux driver for DEVCFG [3]
+Description
+
+This example design shows how to program the PL using the following Linux instructions and a raw binary bitstream.
+
+mknod /dev/xdevcfg c 259 0 > /dev/null
+
+cat system.bit.bin > /dev/xdevcfg
+Author: Dragos Bogdan <dragos.bogdan@analog.com>
+Date:   Mon Jan 13 17:03:40 2014 +0200
+
+The fpga.bin is installed on the zedboard with the RPM 
+fpga-image-adi-1.0+3e6cfd4858-r0.zedboard.rpm.  The RPM installs the file 
+/usr/share/fpga.bin.
+
+BOARD_DESIGN_URI = "git://github.com/analogdevicesinc/fpgahdl_xilinx.git"
+SRCREV = "3e6cfd4858635e49ea131da1bb4b7b6dd258280b"
+
+The version used to generate the
+the fpga.bin
+
+commit 3e6cfd4858635e49ea131da1bb4b7b6dd258280b
+Author: Dragos Bogdan <dragos.bogdan@analog.com>
+Date:   Mon Jan 13 17:03:40 2014 +0200
+
+    fmcomms1: axi_dma and axi_vdma were replaced by axy_dmac.
+
+BOARD_DESIGN_PATH_zedboard = "cf_adv7511_zed"
+
+
+
+POKY/dora_build/poky/build/tmp/work/zedboard-poky-linux-gnueabi/fpga-image-adi/1.AUTOINC-3e6cfd4858-r0/
+deploy-rpms/zedboard/
+rpm -qpl deploy-rpms/zedboard/fpga-image-adi-1.0+3e6cfd4858-r0.zedboard.rpm 
+warning: deploy-rpms/zedboard/fpga-image-adi-1.0+3e6cfd4858-r0.zedboard.rpm: Header V4 DSA/SHA1 Signature, key ID d60538e2: NOKEY
+/usr
+/usr/share
+/usr/share/fpga.bin
+On zedboard
+./sha1sum /usr/share/fpga.bin 
+1a2a02dbb1e6a7836c06f3847a3bf065887955fb  /usr/share/fpga.bin
+./sha1sum /etc/rcS.d/S03fpga-image-load.sh
+c17827603ee4f1862b59edfa7de8a086ca68e70d  /etc/rcS.d/S03fpga-image-load.sh
+./sha1sum /etc/init.d/fpga-image-load.sh
+c17827603ee4f1862b59edfa7de8a086ca68e70d  /etc/init.d/fpga-image-load.sh
+
+On build system.
+POKY/dora_build/poky/build/tmp/work/zedboard-poky-linux-gnueabi/fpga-image-adi/1.AUTOINC-3e6cfd4858-r0
+sha1sum fpga.bin 
+1a2a02dbb1e6a7836c06f3847a3bf065887955fb  fpga.bin
+
+The recipe POKY/dora_build/poky/meta-topic/recipes-bsp/fpga/fpga-image-load.bb
+using inherit update-rc.d
+
+#!/bin/sh
+
+BITFILE=/usr/share/fpga.bin
+
+case "$1" in
+  start)
+    if [ ! -e /dev/xdevcfg ]; then
+      mknod /dev/xdevcfg c 259 0
+    fi
+    if [ ! -e "${BITFILE}" ]; then
+      echo "FPGA bitfile ${BITFILE} does not exist"
+      exit 1
+    fi
+    cat "${BITFILE}" > /dev/xdevcfg
+    result=`cat /sys/devices/amba.[0123]/f8007000.devcfg/prog_done`
+    if [ $result -ne 1 ]; then
+      echo "ERROR configuring FPGA, logic is not configured!"
+      exit 1
+    fi
+    ;;
+esac
+
+Xilinx Platform Studio
+Xilinx EDK 14.6 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Launching XPS GUI...
+INFO:EDK - WARNING:Security:42 - Your software subscription period has lapsed.
+   Your current version of Xilinx tools will continue to function, but you no
+   longer qualify for Xilinx software updates or new releases.
+
+[1] git@github.com:topic-embedded-products/meta-topic.git
+[2] git://github.com/analogdevicesinc/fpgahdl_xilinx.git
+[3] http://www.xilinx.com/support/answers/46913.html
