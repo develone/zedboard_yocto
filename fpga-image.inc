@@ -40,11 +40,12 @@ do_compile() {
 			if [ -f "${iseprojf}" ]
 			then
 				iseproj=`basename ${iseprojf} .xmp`
-				source ${XILINX_TOOL_PATH}/ISE_DS/settings${XILINX_TOOL_ARCH}.sh
-				xps -nw ${iseprojf} << EOF
-run bits
-run exporttosdk
-EOF
+/home/vidal/build_fpga.sh
+#				source ${XILINX_TOOL_PATH}/ISE_DS/settings${XILINX_TOOL_ARCH}.sh
+#				xps -nw ${iseprojf} << EOF
+#run bits
+#run exporttosdk
+#EOF
 				test -f ${S}/implementation/${iseproj}.bit
 				cp ${S}/implementation/${iseproj}.bit fpga.bit
 			fi
