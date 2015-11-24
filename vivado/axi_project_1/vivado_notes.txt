@@ -1,0 +1,12 @@
+Working on the http://www.indabook.org/d/Vivado-Hello-World-Tutorial-University-of-New-Mexico.pdf
+Requirements	
+  
+The following is needed	in order to follow this	tutorial:	
+  
+• Vivado w/Xilinx SDK	
+  (tested, version 2013.2)	
+  
+• Zedboard (tested, version D)	
+  
+. /opt/Xilinx/Vivado/2013.4/settings64.sh
+vivado
