@@ -1,3 +1,96 @@
+11/20/15
+removed /home/vidal/POKY/dora_build/poky/build/tmp 62%
+cd POKY/dora_build/poky/
+. oe-init-build-env
+date; bitbake core-image-sato; date 62% --> 66%
+Fri Nov 20 05:45:51 MST 2015
+Parsing recipes: 100% |#########################################| Time: 00:00:22
+Parsing of 1409 .bb files complete (0 cached, 1409 parsed). 1800 targets, 55 skipped, 0 masked, 0 errors.
+NOTE: Resolving any missing task queue dependencies
+NOTE: multiple providers are available for jpeg (jpeg, libjpeg-turbo)
+NOTE: consider defining a PREFERRED_PROVIDER entry to match jpeg
+NOTE: multiple providers are available for jpeg-native (jpeg-native, libjpeg-turbo-native)
+NOTE: consider defining a PREFERRED_PROVIDER entry to match jpeg-native
+
+Build Configuration:
+BB_VERSION        = "1.20.0"
+BUILD_SYS         = "x86_64-linux"
+NATIVELSBSTRING   = "Ubuntu-12.04"
+TARGET_SYS        = "arm-poky-linux-gnueabi"
+MACHINE           = "zedboard"
+DISTRO            = "poky"
+DISTRO_VERSION    = "1.5.1"
+TUNE_FEATURES     = "armv7a vfp neon"
+TARGET_FPU        = "vfp-neon"
+meta              
+meta-yocto        = "dora:c3cccbea7abd4af3d603b2be42b0c7291ff21946"
+meta-topic        = "master:63a952c04ba10b6f40edf635413181e2104f51cf"
+meta-oe           
+meta-multimedia   
+meta-gnome        = "dora:191499a2b54d04855284347ce5a067f998646be4"
+meta-yocto-bsp    = "dora:c3cccbea7abd4af3d603b2be42b0c7291ff21946"
+
+NOTE: Preparing runqueue
+NOTE: Executing SetScene Tasks
+NOTE: Executing RunQueue Tasks
+NOTE: Tasks Summary: Attempted 7436 tasks of which 6301 didn't need to be rerun and all succeeded.
+NOTE: Writing buildhistory
+Fri Nov 20 06:20:40 MST 2015
+
+ 
+20151120124553.log --> poky_build.log
+
+mkfs -t vfat -n ZED_BOOT /dev/sdb1
+mkfs -t ext4 -L ROOT_FS /dev/sdb2
+cd POKY/dora_build/poky/build/tmp/deploy/images/zedboard/
+cp BOOT.bin /media/ZED_BOOT/
+cp autorun.scr /media/ZED_BOOT/
+cp uImage /media/ZED_BOOT/
+cp uImage--3.12+git0+4557b7c2d2-r0-zynq-zed-adv7511-20140329190232.dtb /media/ZED_BOOT/devicetree.dtb
+cd /media/ROOT_FS/
+tar xvfz /home/vidal/POKY/dora_build/poky/build/tmp/deploy/images/zedboard/core-image-sato-zedboard.tar.gz 
+cd /home/vidal/zedboard_support_files/snd_files/
+cp speech_dft.wav /media/ROOT_FS/home/root/
+cd ../
+cp -R usr/ /media/ROOT_FS/home/root/
+
+/home/vidal/POKY/dora_build/poky
+poky
+commit c3cccbea7abd4af3d603b2be42b0c7291ff21946
+Author: Robert Yang <liezhi.yang@windriver.com>
+Date:   Sun Jan 26 14:22:32 2014 +0800
+
+meta-topic
+commit 63a952c04ba10b6f40edf635413181e2104f51cf
+Author: Mike Looijmans <mike.looijmans@topic.nl>
+Date:   Thu Feb 20 15:33:23 2014 +0100
+
+meta-oe
+commit 191499a2b54d04855284347ce5a067f998646be4
+Author: Martin Jansa <Martin.Jansa@gmail.com>
+Date:   Thu Oct 31 11:25:45 2013 +0100
+
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+LCONF_VERSION = "6"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  /home/vidal/POKY/dora_build/poky/meta \
+  /home/vidal/POKY/dora_build/poky/meta-yocto \
+  /home/vidal/POKY/dora_build/poky/meta-topic \
+  /home/vidal/POKY/dora_build/poky/meta-oe/meta-oe \
+  /home/vidal/POKY/dora_build/poky/meta-oe/meta-multimedia \
+  /home/vidal/POKY/dora_build/poky/meta-oe/meta-gnome \
+  /home/vidal/POKY/dora_build/poky/meta-yocto-bsp \
+  "
+BBLAYERS_NON_REMOVABLE ?= " \
+  /home/vidal/POKY/dora_build/poky/meta \
+  /home/vidal/POKY/dora_build/poky/meta-yocto \
+  "
+
 Goal to add newer kernel to Zedboard & u-boot in hopes of fixing the no sound issue.
 Also adding the capability of dynamically downloading bit files to PL and the ability to generate 
 Poky and FPGA builds on single system.

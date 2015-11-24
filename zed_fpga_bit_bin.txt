@@ -1,17 +1,34 @@
+bitbake fpga-image-adi
 
+xps system.xmp
+generate bit
+export sdk
+
+../build/tmp/work/zedboard-poky-linux-gnueabi/fpga-image-adi/1.AUTOINC-3e6cfd4858-r0/git/cf_adv7511_zed/implementation/system.bit 
+
+find ../ -name fpga.bit
+../build/tmp/work/zedboard-poky-linux-gnueabi/fpga-image-adi/1.AUTOINC-3e6cfd4858-r0/git/cf_adv7511_zed/fpga.bit
 
 In the local.conf file the variable IMAGE_INSTALL_append should include the following 
 items fpga-image-adi adi-hdmi-load. These 2 items are from meta-topic [1].   
 This repository was created by Mike Looijmans <mike.looijmans@topic.nl>.
-
+Currently using an older version since this was a rebuild using Yocto dora branch.
+Additional variables are required in the local.conf file.
+	XILINX_LM_LICENSE_FILE requires the location of Xilinx license.
+	XILINX_TOOL_ARCH requries the host arch
+	BOARD_DESIGN_URI the analog devices repo [2] 
+	ZYNQ_BITFILE = "/home/vidal/zedboard_bit_files/system.bit"
+	XILINX_TOOL_PATH Top level path of Xilinx tools.
+	XILINX_VIVADO_PATH Top level path of Xilinx Vivado tool.
 The recipe "meta-topic/recipes-bsp/fpga/fpga-image-adi.bb"  
 is used in the core-image-sato build.  The recipe fpga-image-adi.bb
 calls the Xilinx XPS program using the
-"FPGA bitstream reference design from ADI" [2].  The recipe 
+"FPGA bitstream reference design from ADI"[2].  The recipe 
 "meta-topic/recipes-bsp/fpga/fpga-image-adi.bb" will download
  "git://github.com/analogdevicesinc/fpgahdl_xilinx.git"
 check out the version "3e6cfd4858635e49ea131da1bb4b7b6dd258280b".
-
+The file "meta-topic/recipes-bsp/fpga/fpga-image.inc" is where the additional variables
+in the local.conf are used.
 
 The recipe "meta-topic/recipes-bsp/fpga/fpga-image-load.bb"
 creates the RPM used to install the file "/etc/init.d/fpga-image-load.sh".
