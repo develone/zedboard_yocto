@@ -255,7 +255,7 @@ entity m01_couplers_imp_8TWPTO is
 end m01_couplers_imp_8TWPTO;
 
 architecture STRUCTURE of m01_couplers_imp_8TWPTO is
-  component zynq_design_1_auto_pc_8 is
+  component zynq_design_1_auto_pc_16 is
   port (
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
@@ -318,7 +318,7 @@ architecture STRUCTURE of m01_couplers_imp_8TWPTO is
     m_axi_rvalid : in STD_LOGIC;
     m_axi_rready : out STD_LOGIC
   );
-  end component zynq_design_1_auto_pc_8;
+  end component zynq_design_1_auto_pc_16;
   signal S_ACLK_1 : STD_LOGIC;
   signal S_ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal auto_pc_to_m01_couplers_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -438,7 +438,7 @@ begin
   m01_couplers_to_auto_pc_WLAST <= S_AXI_wlast;
   m01_couplers_to_auto_pc_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
   m01_couplers_to_auto_pc_WVALID <= S_AXI_wvalid;
-auto_pc: component zynq_design_1_auto_pc_8
+auto_pc: component zynq_design_1_auto_pc_16
     port map (
       aclk => S_ACLK_1,
       aresetn => S_ARESETN_1(0),
@@ -589,7 +589,7 @@ entity s00_couplers_imp_5VZGPS is
 end s00_couplers_imp_5VZGPS;
 
 architecture STRUCTURE of s00_couplers_imp_5VZGPS is
-  component zynq_design_1_auto_pc_9 is
+  component zynq_design_1_auto_pc_17 is
   port (
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
@@ -671,7 +671,7 @@ architecture STRUCTURE of s00_couplers_imp_5VZGPS is
     m_axi_rvalid : in STD_LOGIC;
     m_axi_rready : out STD_LOGIC
   );
-  end component zynq_design_1_auto_pc_9;
+  end component zynq_design_1_auto_pc_17;
   signal S_ACLK_1 : STD_LOGIC;
   signal S_ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal auto_pc_to_s00_couplers_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -829,7 +829,7 @@ begin
   s00_couplers_to_auto_pc_WLAST <= S_AXI_wlast;
   s00_couplers_to_auto_pc_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
   s00_couplers_to_auto_pc_WVALID <= S_AXI_wvalid;
-auto_pc: component zynq_design_1_auto_pc_9
+auto_pc: component zynq_design_1_auto_pc_17
     port map (
       aclk => S_ACLK_1,
       aresetn => S_ARESETN_1(0),
@@ -1782,8 +1782,8 @@ entity zynq_design_1 is
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     leds_8bits_tri_o : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of zynq_design_1 : entity is "zynq_design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLanguage=VHDL,numBlks=12,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=0,da_axi4_cnt=2,da_board_cnt=1,da_bram_cntlr_cnt=2,da_ps7_cnt=1}";
+  attribute core_generation_info : string;
+  attribute core_generation_info of zynq_design_1 : entity is "zynq_design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLanguage=VHDL,numBlks=12,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=0,da_axi4_cnt=2,da_board_cnt=1,da_bram_cntlr_cnt=2,da_ps7_cnt=1}";
 end zynq_design_1;
 
 architecture STRUCTURE of zynq_design_1 is
@@ -2115,13 +2115,13 @@ architecture STRUCTURE of zynq_design_1 is
   signal NLW_rst_processing_system7_0_100M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_processing_system7_0_100M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_processing_system7_0_100M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute BMM_INFO_ADDRESS_SPACE : string;
-  attribute BMM_INFO_ADDRESS_SPACE of axi_bram_ctrl_0 : label is "byte  0x40000000 32 >  zynq_design_1 blk_mem_gen_0";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of axi_bram_ctrl_0 : label is "yes";
-  attribute BMM_INFO_PROCESSOR : string;
-  attribute BMM_INFO_PROCESSOR of processing_system7_0 : label is "ARM > zynq_design_1 axi_bram_ctrl_0";
+  attribute bmm_info_address_space : string;
+  attribute bmm_info_address_space of axi_bram_ctrl_0 : label is "byte  0x40000000 32 >  zynq_design_1 blk_mem_gen_0";
   attribute KEEP_HIERARCHY of processing_system7_0 : label is "yes";
+  attribute bmm_info_processor : string;
+  attribute bmm_info_processor of processing_system7_0 : label is "ARM > zynq_design_1 axi_bram_ctrl_0";
 begin
   leds_8bits_tri_o(7 downto 0) <= axi_gpio_0_GPIO_TRI_O(7 downto 0);
 GND: unisim.vcomponents.GND
