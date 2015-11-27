@@ -1,0 +1,11 @@
+#!/bin/sh
+value=0;
+for i in 0 1 2 3 4 5 6 7;
+do
+        sw=$((72-$i));
+        sw_tmp=`cat /sys/class/gpio/gpio$sw/value`;
+        value=$(($value*2));
+        value=$(($value+$sw_tmp));
+done;
+printf "0x%x %d\n" $value $value;
+

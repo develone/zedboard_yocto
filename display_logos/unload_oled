@@ -1,0 +1,2 @@
+#!/bin/sh
+rmmod pmodoled-gpio /lib/modules/`uname -r`/kernel/drivers/staging/pmod/pmodoled-gpio.ko;

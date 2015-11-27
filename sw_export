@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "Starting rcS..."
+
+
+#echo "++ Starting OLED Display"
+#load_oled
+
+echo "++ Exporting LEDs & SWs"
+for i in 0 1 2 3 4 5 6 7; 
+do
+        sw=$(($i+65));
+        echo $sw > /sys/class/gpio/export;
+done;
