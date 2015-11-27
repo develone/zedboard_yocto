@@ -418,6 +418,7 @@ libmenu5-5.9-r15.1.armv7a_vfp_neon
 libmenuw5-5.9-r15.1.armv7a_vfp_neon
 libmount-dev-2.23.2-r0.armv7a_vfp_neon
 libmount1-2.23.2-r0.armv7a_vfp_neon
+libmozjs-17.0.0-r0.armv7a_vfp_neon
 libmpc3-1.0.1-r0.armv7a_vfp_neon
 libmpfr4-3.1.2-r0.armv7a_vfp_neon
 libncurses5-5.9-r15.1.armv7a_vfp_neon
@@ -679,11 +680,15 @@ mesa-demos-8.1.0-r0.armv7a_vfp_neon
 mini-x-session-0.1-r4.armv7a_vfp_neon
 modutils-initscripts-1.0-r6.armv7a_vfp_neon
 modutils-loadscript-2-r0.armv7a_vfp_neon
+mozjs-17.0.0-r0.armv7a_vfp_neon
+mozjs-dev-17.0.0-r0.armv7a_vfp_neon
 mtdev-1.1.2-r0.armv7a_vfp_neon
 ncurses-5.9-r15.1.armv7a_vfp_neon
 ncurses-dev-5.9-r15.1.armv7a_vfp_neon
 ncurses-terminfo-base-5.9-r15.1.armv7a_vfp_neon
 netbase-5.1-r0.armv7a_vfp_neon
+nspr-4.10-r0.armv7a_vfp_neon
+nspr-dev-4.10-r0.armv7a_vfp_neon
 ocf-linux-20120127-r3.0.armv7a_vfp_neon
 ocf-linux-dev-20120127-r3.0.armv7a_vfp_neon
 ofono-1.12-r2.armv7a_vfp_neon
@@ -734,6 +739,7 @@ pciutils-ids-3.2.0-r0.armv7a_vfp_neon
 pcmanfm-1.1.0-r0.armv7a_vfp_neon
 perf-3.12.0-r8.zedboard
 perl-5.14.3-r1.armv7a_vfp_neon
+perl-dev-5.14.3-r1.armv7a_vfp_neon
 perl-module-abbrev-5.14.3-r1.armv7a_vfp_neon
 perl-module-anydbm-file-5.14.3-r1.armv7a_vfp_neon
 perl-module-app-cpan-5.14.3-r1.armv7a_vfp_neon
@@ -1358,6 +1364,8 @@ perl-module-xsloader-5.14.3-r1.armv7a_vfp_neon
 perl-modules-5.14.3-r1.armv7a_vfp_neon
 pkgconfig-0.28-r0.armv7a_vfp_neon
 pointercal-0.0-r11.zedboard
+polkit-0.111-r0.armv7a_vfp_neon
+polkit-dev-0.111-r0.armv7a_vfp_neon
 powertop-2.4-r0.armv7a_vfp_neon
 psplash-0.1+git0+afd4e228c6-r15.armv7a_vfp_neon
 psplash-default-0.1+git0+afd4e228c6-r15.armv7a_vfp_neon
@@ -1489,6 +1497,7 @@ systemtap-2.3+git0+e58138572e-r0.armv7a_vfp_neon
 sysvinit-2.88dsf-r11.armv7a_vfp_neon
 sysvinit-inittab-2.88dsf-r9.zedboard
 sysvinit-pidof-2.88dsf-r11.armv7a_vfp_neon
+tar-1.26-r5.armv7a_vfp_neon
 tcl-8.6.0-r0.armv7a_vfp_neon
 tcl-lib-8.6.0-r0.armv7a_vfp_neon
 trace-cmd-1.2+git0+7055ffd37b-r3.armv7a_vfp_neon

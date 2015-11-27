@@ -1,0 +1,229 @@
+diff --git a/recipes-core/busybox/busybox_1.2%.bbappend b/recipes-core/busybox/busybox_1.2%.bbappend
+deleted file mode 100644
+index 2d94ed9..0000000
+--- a/recipes-core/busybox/busybox_1.2%.bbappend
++++ /dev/null
+@@ -1,19 +0,0 @@
+-# Increment PR number
+-PRINC = "5"
+-
+-SRC_URI += "\
+-	file://inetd file://inetd.conf \
+-	file://mdev file://mdev.conf file://mdev-mount.sh \
+-	"
+-
+-do_install_append() {
+-	if grep -q "CONFIG_CRONTAB=y" ${WORKDIR}/defconfig; then
+-		install -d ${D}${sysconfdir}/cron/crontabs
+-	fi
+-	install -d ${D}${sysconfdir}/mdev
+-	install -m 0755 ${WORKDIR}/mdev-mount.sh ${D}${sysconfdir}/mdev
+-	install -m 0755 ${WORKDIR}/find-touchscreen.sh ${D}${sysconfdir}/mdev
+-}
+-
+-# use our own defconfig
+-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+diff --git a/recipes-kernel/linux-zynq/linux-topic/zedboard/defconfig b/recipes-kernel/linux-zynq/linux-topic/zedboard/defconfig
+index 8c7025b..50a8962 100644
+--- a/recipes-kernel/linux-zynq/linux-topic/zedboard/defconfig
++++ b/recipes-kernel/linux-zynq/linux-topic/zedboard/defconfig
+@@ -1672,19 +1672,97 @@ CONFIG_MEDIA_SUPPORT=y
+ #
+ # Multimedia core support
+ #
+-# CONFIG_MEDIA_CAMERA_SUPPORT is not set
++CONFIG_MEDIA_CAMERA_SUPPORT=y
+ # CONFIG_MEDIA_ANALOG_TV_SUPPORT is not set
+ # CONFIG_MEDIA_DIGITAL_TV_SUPPORT is not set
+ # CONFIG_MEDIA_RADIO_SUPPORT is not set
+ # CONFIG_MEDIA_RC_SUPPORT is not set
+-# CONFIG_VIDEO_ADV_DEBUG is not set
++# CONFIG_MEDIA_CONTROLLER is not set
++CONFIG_VIDEO_DEV=y
++CONFIG_VIDEO_V4L2=y
++CONFIG_VIDEO_ADV_DEBUG=y
+ # CONFIG_VIDEO_FIXED_MINOR_RANGES is not set
++CONFIG_VIDEOBUF2_CORE=m
++CONFIG_VIDEOBUF2_MEMOPS=m
++CONFIG_VIDEOBUF2_VMALLOC=m
++CONFIG_VIDEO_V4L2_INT_DEVICE=m
+ # CONFIG_TTPCI_EEPROM is not set
+ 
+ #
+ # Media drivers
+ #
+-# CONFIG_MEDIA_USB_SUPPORT is not set
++CONFIG_MEDIA_USB_SUPPORT=y
++
++#
++# Webcam devices
++#
++CONFIG_USB_VIDEO_CLASS=m
++CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV=y
++CONFIG_USB_GSPCA=m
++# CONFIG_USB_M5602 is not set
++# CONFIG_USB_STV06XX is not set
++# CONFIG_USB_GL860 is not set
++# CONFIG_USB_GSPCA_BENQ is not set
++# CONFIG_USB_GSPCA_CONEX is not set
++# CONFIG_USB_GSPCA_CPIA1 is not set
++# CONFIG_USB_GSPCA_ETOMS is not set
++# CONFIG_USB_GSPCA_FINEPIX is not set
++# CONFIG_USB_GSPCA_JEILINJ is not set
++# CONFIG_USB_GSPCA_JL2005BCD is not set
++# CONFIG_USB_GSPCA_KINECT is not set
++# CONFIG_USB_GSPCA_KONICA is not set
++# CONFIG_USB_GSPCA_MARS is not set
++# CONFIG_USB_GSPCA_MR97310A is not set
++# CONFIG_USB_GSPCA_NW80X is not set
++# CONFIG_USB_GSPCA_OV519 is not set
++# CONFIG_USB_GSPCA_OV534 is not set
++# CONFIG_USB_GSPCA_OV534_9 is not set
++# CONFIG_USB_GSPCA_PAC207 is not set
++# CONFIG_USB_GSPCA_PAC7302 is not set
++# CONFIG_USB_GSPCA_PAC7311 is not set
++# CONFIG_USB_GSPCA_SE401 is not set
++# CONFIG_USB_GSPCA_SN9C2028 is not set
++# CONFIG_USB_GSPCA_SN9C20X is not set
++# CONFIG_USB_GSPCA_SONIXB is not set
++# CONFIG_USB_GSPCA_SONIXJ is not set
++# CONFIG_USB_GSPCA_SPCA500 is not set
++# CONFIG_USB_GSPCA_SPCA501 is not set
++# CONFIG_USB_GSPCA_SPCA505 is not set
++# CONFIG_USB_GSPCA_SPCA506 is not set
++# CONFIG_USB_GSPCA_SPCA508 is not set
++# CONFIG_USB_GSPCA_SPCA561 is not set
++# CONFIG_USB_GSPCA_SPCA1528 is not set
++# CONFIG_USB_GSPCA_SQ905 is not set
++# CONFIG_USB_GSPCA_SQ905C is not set
++# CONFIG_USB_GSPCA_SQ930X is not set
++# CONFIG_USB_GSPCA_STK014 is not set
++# CONFIG_USB_GSPCA_STK1135 is not set
++# CONFIG_USB_GSPCA_STV0680 is not set
++# CONFIG_USB_GSPCA_SUNPLUS is not set
++# CONFIG_USB_GSPCA_T613 is not set
++# CONFIG_USB_GSPCA_TOPRO is not set
++# CONFIG_USB_GSPCA_TV8532 is not set
++# CONFIG_USB_GSPCA_VC032X is not set
++# CONFIG_USB_GSPCA_VICAM is not set
++# CONFIG_USB_GSPCA_XIRLINK_CIT is not set
++# CONFIG_USB_GSPCA_ZC3XX is not set
++# CONFIG_USB_PWC is not set
++# CONFIG_VIDEO_CPIA2 is not set
++# CONFIG_USB_ZR364XX is not set
++# CONFIG_USB_STKWEBCAM is not set
++# CONFIG_USB_S2255 is not set
++# CONFIG_USB_SN9C102 is not set
++# CONFIG_VIDEO_USBTV is not set
++
++#
++# Webcam, TV (analog/digital) USB devices
++#
++# CONFIG_VIDEO_EM28XX is not set
++CONFIG_V4L_PLATFORM_DRIVERS=y
++# CONFIG_VIDEO_TIMBERDALE is not set
++# CONFIG_SOC_CAMERA is not set
++# CONFIG_V4L_MEM2MEM_DRIVERS is not set
++# CONFIG_V4L_TEST_DRIVERS is not set
+ 
+ #
+ # Supported MMC/SDIO adapters
+@@ -1694,12 +1772,47 @@ CONFIG_MEDIA_SUPPORT=y
+ #
+ # Media ancillary drivers (tuners, sensors, i2c, frontends)
+ #
++CONFIG_MEDIA_SUBDRV_AUTOSELECT=y
+ 
+ #
+-# Customise DVB Frontends
++# Audio decoders, processors and mixers
++#
++
++#
++# RDS decoders
++#
++
++#
++# Video decoders
++#
++
++#
++# Video and audio decoders
++#
++
++#
++# Video encoders
++#
++
++#
++# Camera sensor devices
++#
++
++#
++# Flash devices
++#
++
++#
++# Video improvement chips
++#
++
++#
++# Miscelaneous helper chips
++#
++
++#
++# Sensors used on soc_camera driver
+ #
+-CONFIG_DVB_TUNER_DIB0070=m
+-CONFIG_DVB_TUNER_DIB0090=m
+ 
+ #
+ # Tools to develop new frontends
+@@ -2104,16 +2217,16 @@ CONFIG_USB_XUSBPS=y
+ # CONFIG_USB_M66592 is not set
+ # CONFIG_USB_NET2272 is not set
+ # CONFIG_USB_DUMMY_HCD is not set
+-CONFIG_USB_LIBCOMPOSITE=y
+-CONFIG_USB_U_ETHER=y
+-CONFIG_USB_U_RNDIS=y
+-CONFIG_USB_F_ECM=y
+-CONFIG_USB_F_SUBSET=y
+-CONFIG_USB_F_RNDIS=y
++CONFIG_USB_LIBCOMPOSITE=m
++CONFIG_USB_U_ETHER=m
++CONFIG_USB_U_RNDIS=m
++CONFIG_USB_F_ECM=m
++CONFIG_USB_F_SUBSET=m
++CONFIG_USB_F_RNDIS=m
+ # CONFIG_USB_CONFIGFS is not set
+ # CONFIG_USB_ZERO is not set
+ # CONFIG_USB_AUDIO is not set
+-CONFIG_USB_ETH=y
++CONFIG_USB_ETH=m
+ CONFIG_USB_ETH_RNDIS=y
+ # CONFIG_USB_ETH_EEM is not set
+ # CONFIG_USB_G_NCM is not set
+@@ -2128,6 +2241,7 @@ CONFIG_USB_ETH_RNDIS=y
+ # CONFIG_USB_G_MULTI is not set
+ # CONFIG_USB_G_HID is not set
+ # CONFIG_USB_G_DBGP is not set
++# CONFIG_USB_G_WEBCAM is not set
+ CONFIG_MMC=y
+ # CONFIG_MMC_DEBUG is not set
+ # CONFIG_MMC_UNSAFE_RESUME is not set
+@@ -2502,6 +2616,7 @@ CONFIG_XILINX_XADC=y
+ # Direct Digital Synthesis
+ #
+ # CONFIG_CF_AXI_DDS is not set
++# CONFIG_CF_AXI_DDS_SO is not set
+ 
+ #
+ # Phase-Locked Loop (PLL) frequency synthesizers
+diff --git a/recipes-multimedia/alsa/alsa-utils_1.%.bbappend b/recipes-multimedia/alsa/alsa-utils_1.%.bbappend
+deleted file mode 100644
+index d63efac..0000000
+--- a/recipes-multimedia/alsa/alsa-utils_1.%.bbappend
++++ /dev/null
+@@ -1,2 +0,0 @@
+-# Prevent alsa-utils dragging in udev
+-PACKAGECONFIG = ""
