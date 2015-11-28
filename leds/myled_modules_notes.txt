@@ -1,0 +1,111 @@
+
+Create an SDK 
+cd POKY/dora_build/poky/
+
+. oe-init-build-env
+
+On a dora distro 1.5  
+
+bitbake bitbake meta-toolchain-sdk  
+
+Install dora sdk
+
+sudo tmp/deploy/sdk/poky-eglibc-x86_64-meta-toolchain-gmae-armv7a-vfp-neon-toolchain-gmae-1.5.1.sh
+-meta-toolchain-gmae-armv7a-vfp-neon-toolchain-gmae-1.5.1.sh 
+[sudo] password for vidal: 
+Enter target directory for SDK (default: /opt/poky/1.5.1): 
+You are about to install the SDK to "/opt/poky/1.5.1". Proceed[Y/n]?
+Extracting SDK...
+
+. /opt/poky/1.5.1/environment-setup-armv7a-vfp-neon-poky-linux-gnueabi
+
+Create myled.ko
+
+cd zedboard_kernel_topic/linux-topic/3.12+gitAUTOINC+4557b7c2d2-r0/drivers/
+
+ls
+Makefile  myled.c
+
+make 
+make -C ../git/ M=/home/vidal/zedboard_kernel_topic/linux-topic/3.12+gitAUTOINC+4557b7c2d2-r0/drivers modules
+make[1]: Entering directory `/home/vidal/zedboard_kernel_topic/linux-topic/3.12+gitAUTOINC+4557b7c2d2-r0/git'
+  CC [M]  /home/vidal/zedboard_kernel_topic/linux-topic/3.12+gitAUTOINC+4557b7c2d2-r0/drivers/myled.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/vidal/zedboard_kernel_topic/linux-topic/3.12+gitAUTOINC+4557b7c2d2-r0/drivers/myled.mod.o
+  LD [M]  /home/vidal/zedboard_kernel_topic/linux-topic/3.12+gitAUTOINC+4557b7c2d2-r0/drivers/myled.ko
+make[1]: Leaving directory `/home/vidal/zedboard_kernel_topic/linux-topic/3.12+gitAUTOINC+4557b7c2d2-r0/git'
+
+ls -la
+total 112
+drwxrwxr-x  3 vidal vidal  4096 Nov 28 11:20 .
+drwxrwxr-x 14 vidal vidal  4096 Nov 27 17:45 ..
+-rw-r--r--  1 vidal vidal    96 Nov 27 17:46 Makefile
+-rw-rw-r--  1 vidal vidal   100 Nov 28 11:20 modules.order
+-rw-rw-r--  1 vidal vidal     0 Nov 28 11:20 Module.symvers
+-rw-r--r--  1 vidal vidal  5939 Nov 28 07:10 myled.c
+-rw-rw-r--  1 vidal vidal  8880 Nov 28 11:20 myled.ko
+-rw-rw-r--  1 vidal vidal   539 Nov 28 11:20 .myled.ko.cmd
+-rw-rw-r--  1 vidal vidal  2084 Nov 28 11:20 myled.mod.c
+-rw-rw-r--  1 vidal vidal  3460 Nov 28 11:20 myled.mod.o
+-rw-rw-r--  1 vidal vidal 23609 Nov 28 11:20 .myled.mod.o.cmd
+-rw-rw-r--  1 vidal vidal  6104 Nov 28 11:20 myled.o
+-rw-rw-r--  1 vidal vidal 28640 Nov 28 11:20 .myled.o.cmd
+drwxrwxr-x  2 vidal vidal  4096 Nov 28 11:20 .tmp_versions
+
+Copy the file "myled.ko" to zedboard /lib/modules/3.12.0/kernel/drivers/staging/pmods/myled.ko
+
+on power up
+
+ls -la /sys/devices/leds.6/leds/
+total 0
+drwxr-xr-x 11 root root 0 Jan  1  1970 .
+drwxr-xr-x  4 root root 0 Jan  1  1970 ..
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld0:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld1:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld2:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld3:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld4:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld5:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld6:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld7:red
+drwxr-xr-x  3 root root 0 Jan  1  1970 ld9
+
+ls /proc/device-tree/leds/
+compatible  ld0  ld1  ld2  ld3	ld4  ld5  ld6  ld7  ld9  name
+
+lsmod
+Module                  Size  Used by
+ipv6                  258832  28 
+pmodoled_gpio           7606  0 
+snd_soc_zed_adau1761     3515  0 
+snd_soc_adi_axi_i2s     3098  2 
+snd_soc_adv7511_hdmi     2443  0 
+snd_soc_adi_axi_spdif     3030  2 
+regmap_mmio             2573  2 snd_soc_adi_axi_spdif,snd_soc_adi_axi_i2s
+adi_axi_hdmi            9755  0 
+drm_kms_cma_helper      5735  3 adi_axi_hdmi
+syscopyarea             2739  1 drm_kms_cma_helper
+sysfillrect             3000  1 drm_kms_cma_helper
+sysimgblt               2024  1 drm_kms_cma_helper
+clk_axi_clkgen          5561  0 
+adv7511                 9469  2 adi_axi_hdmi
+drm_kms_helper         32445  3 adi_axi_hdmi,adv7511,drm_kms_cma_helper
+xilinx_dma             11108  1 
+snd_soc_adau1761       16799  1 
+snd_soc_adau17x1       12855  1 snd_soc_adau1761
+snd_soc_sigmadsp        2087  1 snd_soc_adau17x1
+i2c_xiic                5952  0 
+uvcvideo               61991  0 
+videobuf2_vmalloc       2854  1 uvcvideo
+videobuf2_memops        2114  1 videobuf2_vmalloc
+videobuf2_core         29153  1 uvcvideo
+
+./display_logos/load_myled 
+loading module myled.ko
+root@zedboard:~# lsmod
+Module                  Size  Used by
+myled                   2999  0 
+
+
+ 

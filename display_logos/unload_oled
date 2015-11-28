@@ -1,2 +1,3 @@
 #!/bin/sh
+echo "unloading module pmodoled-gpio.ko"
 rmmod pmodoled-gpio;

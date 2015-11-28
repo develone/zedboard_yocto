@@ -1,3 +1,4 @@
+#include <linux/slab.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <asm/uaccess.h> /* Needed for copy_from_user */
@@ -121,7 +122,7 @@ static int myled_remove(struct platform_device *pdev)
  * * kernel virtual memory space. Create an entry under /proc file system
  * * and register file operations for that entry.
  * */
-static int __devinit myled_probe(struct platform_device *pdev)
+static int myled_probe(struct platform_device *pdev)
 {
 	struct proc_dir_entry *myled_proc_entry;
 	int ret = 0;
@@ -159,7 +160,7 @@ err_release_region:
 }
 
 /* device match table to match with device node in device tree */
-static const struct of_device_id myled_of_match[] __devinitconst = {
+static const struct of_device_id myled_of_match[]  = {
 	{.compatible = "dglnt,myled-1.00.a"},
 	{},
 };
@@ -175,8 +176,8 @@ static struct platform_driver myled_driver = {
 		.owner = THIS_MODULE,
 		.of_match_table = myled_of_match},
 	.probe = myled_probe,
-	.remove = __devexit_p(myled_remove),
-	.shutdown = __devexit_p(myled_shutdown)
+	.remove = (myled_remove),
+	.shutdown = (myled_shutdown)
 };
 
 /* Register myled platform driver */

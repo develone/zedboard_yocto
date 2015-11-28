@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "loading module pmodoled-gpio.ko"
 insmod /lib/modules/`uname -r`/kernel/drivers/staging/pmods/pmodoled-gpio.ko;
 
 if [ -c /dev/zed_oled ]; then
