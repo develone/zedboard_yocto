@@ -54,6 +54,7 @@ db-dev-5.3.21-r0.armv7a_vfp_neon
 dbus-1-1.6.10-r6.0.armv7a_vfp_neon
 dbus-dev-1.6.10-r6.0.armv7a_vfp_neon
 dbus-wait-0.1+git0+6cc6077a36-r2.armv7a_vfp_neon
+devmem2-1.0-r7.armv7a_vfp_neon
 diffstat-1.57-r0.armv7a_vfp_neon
 diffutils-3.3-r0.armv7a_vfp_neon
 distcc-3.1-r0.armv7a_vfp_neon
@@ -1499,6 +1500,7 @@ sysvinit-inittab-2.88dsf-r9.zedboard
 sysvinit-pidof-2.88dsf-r11.armv7a_vfp_neon
 tar-1.26-r5.armv7a_vfp_neon
 tcl-8.6.0-r0.armv7a_vfp_neon
+tcl-dev-8.6.0-r0.armv7a_vfp_neon
 tcl-lib-8.6.0-r0.armv7a_vfp_neon
 trace-cmd-1.2+git0+7055ffd37b-r3.armv7a_vfp_neon
 tslib-calibrate-1.1-r0.armv7a_vfp_neon

@@ -1,0 +1,36 @@
+#!/bin/bash
+echo 1 > /sys/class/leds/ld7\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld6\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld5\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld5\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld4\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld3\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld2\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld1\:red/brightness
+sleep 1 
+echo 1 > /sys/class/leds/ld0\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld7\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld6\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld5\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld5\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld4\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld3\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld2\:red/brightness
+echo 0 > /sys/class/leds/ld1\:red/brightness
+sleep 1 
+echo 0 > /sys/class/leds/ld0\:red/brightness
+sleep 1 
