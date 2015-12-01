@@ -1,4 +1,0 @@
-#!/bin/sh
-echo "loading module myled.ko"
-insmod /lib/modules/`uname -r`/kernel/drivers/staging/pmods/myled.ko;
-

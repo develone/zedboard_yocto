@@ -1,4 +1,0 @@
-#!/bin/sh
-echo "unloading module myled.ko"
-
-rmmod myled;
