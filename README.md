@@ -1,7 +1,7 @@
-11/27/15
+12/1/15
 
-Goal: To add sound, USB C-920 camera support, openCV, gnuplot, gsl and vlc dependencies
-to the zedboard.  Modifing the 3.12+gitAUTOINC+4557b7c2d2-r0 Linux Kernel.  
+Goal: To add sound support, USB C-920 camera support, openCV, gnuplot, gsl gnuradio, and 
+vlc dependencies to the zedboard.  Modifing the 3.12+gitAUTOINC+4557b7c2d2-r0 Linux Kernel.  
  
 Requirements: 
 	Xilinx 14.6 & Vivado 2013.4  used by meta-topic to create fpga-bin.
@@ -16,7 +16,7 @@ Requirements:
         ext3 formatted w/cmd "mkfs -t ext4 -L ROOT_FS /dev/sdb2"
  
 Using the poky dora c3cccbea7abd4af3d603b2be42b0c7291ff21946 branch and meta-topic branch 63a952c04ba10b6f40edf635413181e2104f51cf patched with the file "dora_meta-topic-diff_63a952c04ba10b6f40.patch".
-Need the reuired meta data
+Need the required meta data
 poky dora:c3cccbea7abd4af3d603b2be42b0c7291ff21946
 	meta-topic master:63a952c04ba10b6f40edf635413181e2104f51cf
 	meta-oe/meta-oe dora:191499a2b54d04855284347ce5a067f998646be4

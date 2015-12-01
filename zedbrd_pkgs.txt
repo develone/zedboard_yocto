@@ -126,6 +126,7 @@ git-1.8.3.4-r0.armv7a_vfp_neon
 glib-networking-2.36.2-r0.armv7a_vfp_neon
 gnu-config-20120814-r0.armv7a_vfp_neon
 gnuplot-4.4.4-r1.armv7a_vfp_neon
+gnuradio-3.6.4.1-r0.armv7a_vfp_neon
 gperf-3.0.4-r0.armv7a_vfp_neon
 groff-1.22.2-r1.armv7a_vfp_neon
 gsl-1.15-r0.armv7a_vfp_neon
@@ -306,6 +307,12 @@ libavutil-dev-0.8.8-r0.armv7a_vfp_neon
 libavutil51-0.8.8-r0.armv7a_vfp_neon
 libblkid-dev-2.23.2-r0.armv7a_vfp_neon
 libblkid1-2.23.2-r0.armv7a_vfp_neon
+libboost-date-time1.54.0-1.54.0-r0.armv7a_vfp_neon
+libboost-filesystem1.54.0-1.54.0-r0.armv7a_vfp_neon
+libboost-program-options1.54.0-1.54.0-r0.armv7a_vfp_neon
+libboost-regex1.54.0-1.54.0-r0.armv7a_vfp_neon
+libboost-system1.54.0-1.54.0-r0.armv7a_vfp_neon
+libboost-thread1.54.0-1.54.0-r0.armv7a_vfp_neon
 libbz2-0-1.0.6-r5.armv7a_vfp_neon
 libbz2-dev-1.0.6-r5.armv7a_vfp_neon
 libc6-2.18-r0.armv7a_vfp_neon
@@ -345,6 +352,7 @@ libext2fs2-1.42.8-r0.armv7a_vfp_neon
 libfakekey0-0.0+git0+e327ff049b-r0.armv7a_vfp_neon
 libffi-dev-3.0.13-r0.armv7a_vfp_neon
 libffi6-3.0.13-r0.armv7a_vfp_neon
+libfftwf-3.3.3-r0.armv7a_vfp_neon
 libflac++6-1.2.1-r4.armv7a_vfp_neon
 libflac8-1.2.1-r4.armv7a_vfp_neon
 libfluidsynth-dev-1.1.1-r0.armv7a_vfp_neon
@@ -469,6 +477,7 @@ libopencv-video-dev-2.4.6+git0+c5afaa4e8d-r0.armv7a_vfp_neon
 libopencv-video2.4-2.4.6+git0+c5afaa4e8d-r0.armv7a_vfp_neon
 libopencv-videostab-dev-2.4.6+git0+c5afaa4e8d-r0.armv7a_vfp_neon
 libopencv-videostab2.4-2.4.6+git0+c5afaa4e8d-r0.armv7a_vfp_neon
+liborc-0.4-0-0.4.18-r1.0.armv7a_vfp_neon
 libossp-uuid16-1.6.2-r2.armv7a_vfp_neon
 libowl-av0-0.1+git0+03030c41ea-r3.armv7a_vfp_neon
 libowl0-0.1+git0+6ebc8ac8f8-r0.armv7a_vfp_neon
@@ -1462,6 +1471,7 @@ qt4-plugin-imageformat-jpeg-4.8.5-r0.armv7a_vfp_neon
 qt4-plugin-imageformat-tiff-4.8.5-r0.armv7a_vfp_neon
 quicky-0.4-r2.armv7a_vfp_neon
 quilt-0.60-r1.armv7a_vfp_neon
+qwt-6.0.1-r1.armv7a_vfp_neon
 randrproto-dev-1.4.0-r0.armv7a_vfp_neon
 recordproto-dev-1.14.2-r1.armv7a_vfp_neon
 renderproto-dev-0.11.1-r1.armv7a_vfp_neon
@@ -1511,6 +1521,8 @@ udev-cache-182-r7.armv7a_vfp_neon
 udev-dev-182-r7.armv7a_vfp_neon
 udev-extraconf-1.0-r8.armv7a_vfp_neon
 udev-utils-182-r7.armv7a_vfp_neon
+uhd-3.5.3-r3.0.armv7a_vfp_neon
+uhd-firmware-003.005.003-r0.all
 update-alternatives-cworth-0.1.8+svnr653-r13.0.armv7a_vfp_neon
 update-rc.d-0.7-r5.all
 update-rc.d-dev-0.7-r5.all

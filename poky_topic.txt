@@ -33,12 +33,21 @@ meta-yocto-bsp    = "dora:c3cccbea7abd4af3d603b2be42b0c7291ff21946"
 NOTE: Preparing runqueue
 NOTE: Executing SetScene Tasks
 NOTE: Executing RunQueue Tasks
-NOTE: Tasks Summary: Attempted 7436 tasks of which 6301 didn't need to be rerun and all succeeded.
+ERROR: QA Issue: Package version for package gnuradio-staticdev went backwards which would break package feeds from (0:3.6.5-r0 to 0:3.6.4.1-r0)
+ERROR: QA Issue: Package version for package gnuradio-dev went backwards which would break package feeds from (0:3.6.5-r0 to 0:3.6.4.1-r0)
+ERROR: QA Issue: Package version for package gnuradio-dbg went backwards which would break package feeds from (0:3.6.5-r0 to 0:3.6.4.1-r0)
+ERROR: QA Issue: Package version for package gnuradio-doc went backwards which would break package feeds from (0:3.6.5-r0 to 0:3.6.4.1-r0)
+ERROR: QA Issue: Package version for package gnuradio went backwards which would break package feeds from (0:3.6.5-r0 to 0:3.6.4.1-r0)
+ERROR: QA Issue: Package version for package gnuradio-examples went backwards which would break package feeds from (0:3.6.5-r0 to 0:3.6.4.1-r0)
+ERROR: QA Issue: Package version for package gnuradio-grc went backwards which would break package feeds from (0:3.6.5-r0 to 0:3.6.4.1-r0)
+NOTE: Tasks Summary: Attempted 7609 tasks of which 7588 didn't need to be rerun and all succeeded.
 NOTE: Writing buildhistory
-Fri Nov 20 06:20:40 MST 2015
+
+Summary: There were 7 ERROR messages shown, returning a non-zero exit code.
+Tue Dec  1 06:59:32 MST 2015
 
  
-20151120124553.log --> poky_build.log
+20151201131911.log --> poky_build.log
 
 mkfs -t vfat -n ZED_BOOT /dev/sdb1
 mkfs -t ext4 -L ROOT_FS /dev/sdb2
