@@ -1,0 +1,46 @@
+With a new core-image-sato with gnuradio 3.6.5
+cd gnuradio/
+
+gnuradio-companion fm_example.grc
+
+gnuradio 3.6.5 would appear to bring up the companion gui but fails.
+ 
+
+** (process:4426): WARNING **: Trying to register gtype 'GMountMountFlags' as enum when in fact it is of type 'GFlags'
+
+** (process:4426): WARNING **: Trying to register gtype 'GDriveStartFlags' as enum when in fact it is of type 'GFlags'
+
+** (process:4426): WARNING **: Trying to register gtype 'GSocketMsgFlags' as enum when in fact it is of type 'GFlags'
+Gtk-Message: Failed to load module "canberra-gtk-module"
+<<< Welcome to GNU Radio Companion 3.6.5 >>>
+
+Loading: "fm_example.grc"
+Error: 'options'
+>>> Failure
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/gnuradio/grc/gui/MainWindow.py", line 172, in new_page
+    flow_graph = self._platform.get_new_flow_graph()
+  File "/usr/lib/python2.7/site-packages/gnuradio/grc/base/Platform.py", line 152, in get_new_flow_graph
+    def get_new_flow_graph(self): return self.FlowGraph(platform=self)
+  File "/usr/lib/python2.7/site-packages/gnuradio/grc/python/FlowGraph.py", line 31, in __init__
+    _FlowGraph.__init__(self, **kwargs)
+  File "/usr/lib/python2.7/site-packages/gnuradio/grc/base/FlowGraph.py", line 35, in __init__
+    self.import_data()
+  File "/usr/lib/python2.7/site-packages/gnuradio/grc/base/FlowGraph.py", line 176, in import_data
+    self._options_block = self.get_parent().get_new_block(self, 'options')
+  File "/usr/lib/python2.7/site-packages/gnuradio/grc/base/Platform.py", line 162, in get_new_block
+    def get_new_block(self, flow_graph, key): return self.Block(flow_graph, n=self._blocks_n[key])
+  File "/usr/lib/python2.7/site-packages/gnuradio/grc/base/odict.py", line 34, in __getitem__
+    return self._data[key]
+KeyError: 'options'
+
+bitbake gnuradio -c clean
+bitbake gnuradio -c cleansstate
+
+Copied the dylan gnuradio_git.bb recipe to dora gnuradio_git.bb recipe to create a patch file.
+
+patch -p1 --dry-run < ~/wkg/zedboard_yocto/dora_meta-oe-diff_191499a2b54d04855284347ce5a067f998646be4.patch 
+patching file meta-oe/recipes-connectivity/gnuradio/gnuradio_git.bb
+
+patch -p1  < ~/wkg/zedboard_yocto/dora_meta-oe-diff_191499a2b54d04855284347ce5a067f998646be4.patch 
+patching file meta-oe/recipes-connectivity/gnuradio/gnuradio_git.bb
