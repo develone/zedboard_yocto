@@ -57,12 +57,28 @@ cp autorun.scr /media/ZED_BOOT/
 cp uImage /media/ZED_BOOT/
 cp uImage--3.12+git0+4557b7c2d2-r0-zynq-zed-adv7511-20140329190232.dtb /media/ZED_BOOT/devicetree.dtb
 cd /media/ROOT_FS/
-tar xvfz /home/vidal/POKY/dora_build/poky/build/tmp/deploy/images/zedboard/core-image-sato-zedboard.tar.gz 
-cd /home/vidal/zedboard_support_files/snd_files/
-cp speech_dft.wav /media/ROOT_FS/home/root/
-cd ../
-cp -R usr/ /media/ROOT_FS/home/root/
+tar xvfz /home/vidal/POKY/dora_build/poky/build/tmp/deploy/images/zedboard/core-image-sato-zedboard.tar.gz
 
+cp -R /home/vidal/wkg/yocto/bcm2835_xsconnect_RPi-config_myhdl_rhea_hats/myhdl/ home/root/
+
+cp -R /home/vidal/wkg/yocto/bcm2835_xsconnect_RPi-config_myhdl_rhea_hats/raspberrypi2_yocto/opencv_python_yocto_raspberry_pi/ home/root/
+
+cp -R /home/vidal/wkg/zedboard_yocto/gnuradio/ home/root/
+
+cp -R /home/vidal/wkg/zedboard_yocto/display_logos/ home/root/
+
+cp -R /home/vidal/wkg/zedboard_yocto/leds/ home/root/
+
+cp -R /home/vidal/wkg/zedboard_yocto/read_sw home/root/
+
+cp -R /home/vidal/wkg/zedboard_yocto/sw_export home/root/
+
+cp -R /home/vidal/wkg/zedboard_yocto/snd_test home/root/
+
+cp -R /home/vidal/wkg/jpeg-2000-test home/root/
+
+cp -R /home/vidal/zedboard_support_files/gnuplot/ home/root/
+ 
 /home/vidal/POKY/dora_build/poky
 poky
 commit c3cccbea7abd4af3d603b2be42b0c7291ff21946
